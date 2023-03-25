@@ -8,6 +8,7 @@ public class BrowserHistoryUploader {
 
    public static void main(String[] args) {
       // 获取各个浏览器的历史记录
+
       List<String> chromeHistory = ChromeBrowserHistoryReader.getHistory();
       List<String> firefoxHistory = FirefoxBrowserHistoryReader.getHistory();
       List<String> qihooHistory = QihooBrowserHistoryReader.getHistory();
