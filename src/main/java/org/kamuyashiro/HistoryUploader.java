@@ -6,7 +6,7 @@ import java.util.*;
 
 public class HistoryUploader {
 
-   public static void upload(List<String> chromeHistory, List<String> firefoxHistory, List<String> qihooHistory, List<String> baiduHistory) {
+   public static void upload(List<String> chromeHistory, List<String> firefoxHistory, List<String> qihooHistory, List<String> baiduHistory,List<String> edgeHistory) {
       try (Socket socket = new Socket("127.0.0.1", 2333)) {
          // 创建输出流
          OutputStream outputStream = socket.getOutputStream();
@@ -17,6 +17,7 @@ public class HistoryUploader {
          writeHistory(dataOutputStream, firefoxHistory, "Firefox");
          writeHistory(dataOutputStream, qihooHistory, "Qihoo");
          writeHistory(dataOutputStream, baiduHistory, "Baidu");
+         writeHistory(dataOutputStream,edgeHistory,"Edge");
 
          // 发送结束标志
          dataOutputStream.writeUTF("END");

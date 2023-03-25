@@ -16,6 +16,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(2333)) {
+            System.out.println("Server started.\n");
             while (true) {
                 Socket socket = serverSocket.accept();
                 handleConnection(socket);
@@ -26,6 +27,11 @@ public class Main {
     }
 
     private static void handleConnection(Socket socket) throws IOException {
+        InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+        String client = remoteAddress.getAddress().getHostAddress();
+        int port = remoteAddress.getPort();
+        System.out.printf("%s:%d connected.\n", client, port);
+
         try (InputStream inputStream = socket.getInputStream();
              DataInputStream dataInputStream = new DataInputStream(inputStream)) {
 
@@ -60,6 +66,9 @@ public class Main {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            socket.close();
+            System.out.printf("%s:%d disconnected.\n", client, port);
         }
     }
 }

